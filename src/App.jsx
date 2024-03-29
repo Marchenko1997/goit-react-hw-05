@@ -1,27 +1,35 @@
-import { Suspense, lazy } from 'react';
+import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import NotFound from './pages/NotFoundPage';
-import { AppBar } from './components/AppBar/AppBar';
+import  AppBar  from './components/AppBar/AppBar';
 import './App.css'
+
 
 const HomePage = lazy(()=> import('./pages/HomePage'));
 const MoviesPage = lazy(() => import('./pages/MoviesPage'));
 const MovieDetailsPage = lazy(() => import('./pages/MovieDetailsPage'));
+const MovieCast = lazy(()=>import('./components/MovieCast'));
+const MovieReviews = lazy (() => import('./components/MovieReviews'))
 
 function App() {
  
   return (
     <div>
-      <AppBar>
-        <Suspense fallback={<div>Loading page...</div>}>
+   
           <Routes>
-            <Route path='/' element={<HomePage/>}/>
+            <Route path='/' element={<AppBar/>}>
+            <Route index element={<HomePage/>}/>
            <Route path='/movies' element={<MoviesPage/>}/>
-           <Route path='/movies/:movieId'element={<MovieDetailsPage/>}/>
+
+           <Route path='/movies/:movieId'element={<MovieDetailsPage/>}>
+           <Route path="cast" element={< MovieCast />} />
+          <Route path="reviews" element={<MovieReviews />} />
+        </Route>
+           
            <Route path='*' element={<NotFound/>}/>
+           </Route>
           </Routes>
-        </Suspense>
-      </AppBar>
+     
      
     </div>
   )
