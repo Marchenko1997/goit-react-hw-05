@@ -1,10 +1,13 @@
+// MovieReviews.jsx
 import { useEffect, useState } from "react";
 import { serviceMovieReviews } from "../../movies-api";
 import PropTypes from 'prop-types';
+import { useParams } from "react-router-dom";
 
-const MovieReviews = ({ movieId }) => {
+const MovieReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(false);
+  const { movieId } = useParams();
 
   useEffect(() => {
     async function fetchReviews() {

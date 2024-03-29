@@ -1,11 +1,13 @@
-
+// MovieCast.jsx
 import { useEffect, useState } from "react";
 import { serviceMovieCredits } from "../../movies-api";
 import PropTypes from 'prop-types';
+import { useParams } from "react-router-dom";
 
-const MovieCast = ({ movieId }) => {
+const MovieCast = () => {
   const [cast, setCast] = useState([]);
   const [error, setError] = useState(false);
+  const { movieId } = useParams(); 
 
   useEffect(() => {
     async function fetchMovieCredits() {
