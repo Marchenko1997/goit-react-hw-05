@@ -1,22 +1,22 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getMovieDetails } from "../../movies-api";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
- const fetchMovieDetails = async () => {
-  try{
-const movieDetails = await getMovieDetails(movieId);
-setMovie(movieDetails)
-  } catch (error) {
-    console.error("Error fetching movie details:", error);
-  }
- };
+    const fetchMovieDetails = async () => {
+      try {
+        const movieDetails = await getMovieDetails(movieId);
+        setMovie(movieDetails);
+      } catch (error) {
+        console.error("Error fetching movie details:", error);
+      }
+    };
 
- fetchMovieDetails();
+    fetchMovieDetails();
   }, [movieId]);
 
   if (!movie) return <div>Loading...</div>;
@@ -28,11 +28,14 @@ setMovie(movieDetails)
       <p>User Score: {Math.round(movie.UseScore * 10)}%</p>
 
       <p>Genres: {movie.Genres.join(", ")}</p>
-      <p>Cast: {movie.Cast.join(", ")}</p>
+
       <img
         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
         alt={movie.title}
       />
+      <p>Additional information</p>
+      <Link to={`/movies/${movieId}/cast`}>Cast</Link>
+      <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
     </div>
   );
 };
