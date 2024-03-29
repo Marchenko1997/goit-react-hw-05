@@ -1,16 +1,13 @@
-
-import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 
 const MovieList = ({ movies }) => {
   return (
     <ul>
-      {movies.map(movie => (
+      {movies.map((movie) => (
         <li key={movie.id}>
           <NavLink to={`/movies/${movie.id}`}>
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
             <h2>{movie.title}</h2>
-            <p>{movie.overview}</p>
           </NavLink>
         </li>
       ))}
@@ -24,9 +21,9 @@ MovieList.propTypes = {
       id: PropTypes.number.isRequired,
       poster_path: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-      overview: PropTypes.string.isRequired
+      overview: PropTypes.string.isRequired,
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default MovieList;

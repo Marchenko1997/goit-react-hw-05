@@ -7,9 +7,16 @@ const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    getMovieDetails(movieId)
-      .then((data) => setMovie(data))
-      .catch((error) => console.error(error));
+ const fetchMovieDetails = async () => {
+  try{
+const movieDetails = await getMovieDetails(movieId);
+setMovie(movieDetails)
+  } catch (error) {
+    console.error("Error fetching movie details:", error);
+  }
+ };
+
+ fetchMovieDetails();
   }, [movieId]);
 
   if (!movie) return <div>Loading...</div>;
@@ -18,6 +25,10 @@ const MovieDetailsPage = () => {
     <div>
       <h1>{movie.title}</h1>
       <p>{movie.overview}</p>
+      <p>User Score: {Math.round(movie.UseScore * 10)}%</p>
+
+      <p>Genres: {movie.Genres.join(", ")}</p>
+      <p>Cast: {movie.Cast.join(", ")}</p>
       <img
         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
         alt={movie.title}
