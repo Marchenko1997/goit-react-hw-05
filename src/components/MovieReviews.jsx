@@ -4,16 +4,18 @@ import PropTypes from 'prop-types';
 
 const MovieReviews = ({ movieId }) => {
   const [reviews, setReviews] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    const fetchReviews = async () => {
+    async function fetchReviews() {
       try {
         const reviewsData = await serviceMovieReviews(movieId);
         setReviews(reviewsData.results);
       } catch (error) {
+        setError(true);
         console.error("Error fetching movie reviews:", error);
       }
-    };
+    }
 
     fetchReviews();
   }, [movieId]);
@@ -29,12 +31,14 @@ const MovieReviews = ({ movieId }) => {
           </li>
         ))}
       </ul>
+      
+      {error && <span>Error! Please, reload this page!</span>}
     </div>
   );
 };
 
 MovieReviews.propTypes = {
-  movieId: PropTypes.number.isRequired
+  movieId: PropTypes.string.isRequired 
 };
 
 export default MovieReviews;

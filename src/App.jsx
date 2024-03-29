@@ -1,6 +1,5 @@
 import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import NotFound from "./pages/NotFoundPage";
 import AppBar from "./components/AppBar/AppBar";
 import "./App.css";
 
@@ -9,6 +8,7 @@ const MoviesPage = lazy(() => import("./pages/MoviesPage"));
 const MovieDetailsPage = lazy(() => import("./pages/MovieDetailsPage"));
 const MovieCast = lazy(() => import("./components/MovieCast"));
 const MovieReviews = lazy(() => import("./components/MovieReviews"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
             <Route path="reviews" element={<MovieReviews />} />
           </Route>
 
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </div>
