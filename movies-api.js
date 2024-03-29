@@ -13,7 +13,7 @@ export async function getTrendingMovies() {
   }
 }
 
-export async function SearchMovies(query, page = 1) {
+export async function searchMovies(query, page = 1) {
   try {
     const params = new URLSearchParams({
       api_key: API_KEY,
