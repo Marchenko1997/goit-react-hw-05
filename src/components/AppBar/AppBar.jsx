@@ -20,19 +20,11 @@ const AppBar = () => {
           GoSearch Movies
         </p>
         <nav className={css.nav}>
-          <NavLink
-            to="/"
-            activeClassName={css.active}
-            className={buildLinkClass}
-          >
-                Home
+          <NavLink to="/" className={buildLinkClass}>
+            Home
           </NavLink>
-          <NavLink
-            to="/movies"
-            activeClassName={css.active}
-            className={buildLinkClass}
-          >
-                Movies
+          <NavLink to="/movies" className={buildLinkClass}>
+            Movies
           </NavLink>
         </nav>
       </header>
