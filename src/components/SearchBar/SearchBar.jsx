@@ -1,5 +1,5 @@
 import{ useState } from 'react';
-import PropTypes from 'prop-types'; // Импортируем PropTypes
+import PropTypes from 'prop-types'; 
 
 const SearchBar = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -7,7 +7,7 @@ const SearchBar = ({ onSearch }) => {
   const handleSearch = async () => {
     if (searchQuery.trim() === "") return;
     try {
-      onSearch(searchQuery); // Передаем запрос на поиск родительскому компоненту
+      onSearch(searchQuery); 
     } catch (error) {
       console.error(error);
     }
@@ -25,9 +25,9 @@ const SearchBar = ({ onSearch }) => {
   );
 };
 
-// Проп валидация
+
 SearchBar.propTypes = {
-  onSearch: PropTypes.func.isRequired // Указываем, что onSearch должен быть функцией и обязателен
+  onSearch: PropTypes.func.isRequired 
 };
 
 export default SearchBar;
