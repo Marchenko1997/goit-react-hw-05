@@ -1,7 +1,7 @@
 // MovieReviews.jsx
 import { useEffect, useState } from "react";
 import { serviceMovieReviews } from "../../movies-api";
-import PropTypes from 'prop-types';
+
 import { useParams } from "react-router-dom";
 
 const MovieReviews = () => {
@@ -40,8 +40,6 @@ const MovieReviews = () => {
   );
 };
 
-MovieReviews.propTypes = {
-  movieId: PropTypes.string.isRequired 
-};
+
 
 export default MovieReviews;

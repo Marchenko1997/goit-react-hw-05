@@ -1,7 +1,7 @@
 // MovieCast.jsx
 import { useEffect, useState } from "react";
 import { serviceMovieCredits } from "../../movies-api";
-import PropTypes from 'prop-types';
+
 import { useParams } from "react-router-dom";
 
 const MovieCast = () => {
@@ -14,6 +14,7 @@ const MovieCast = () => {
       try {
         setError(false);
         const creditsData = await serviceMovieCredits(movieId);
+      
         const castData = creditsData.cast.map(actor => ({
           id: actor.id,
           name: actor.name,
@@ -54,8 +55,5 @@ const MovieCast = () => {
   );
 };
 
-MovieCast.propTypes = {
-  movieId: PropTypes.string.isRequired 
-};
 
 export default MovieCast;

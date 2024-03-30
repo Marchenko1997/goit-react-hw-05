@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getMovieDetails } from "../../movies-api";
-import { useParams, Link } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -34,8 +35,11 @@ const MovieDetailsPage = () => {
         alt={movie.title}
       />
       <p>Additional information</p>
-      <Link to={`/movies/${movieId}/cast`}>Cast</Link>
-      <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
+      <nav>
+        <NavLink to={`/movies/${movieId}/cast`}>Cast</NavLink>
+        <NavLink to={`/movies/${movieId}/reviews`} >Reviews</NavLink>
+      </nav>
+      <Outlet />
     </div>
   );
 };
