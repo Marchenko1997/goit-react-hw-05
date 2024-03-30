@@ -1,14 +1,15 @@
+// MoviesPage.jsx
+import  { useState } from 'react';
 import { searchMovies } from "../../movies-api";
-import { useState } from "react";
 import MovieList from "../components/MovieList";
+import SearchBar from "../components/SearchBar/SearchBar";
+
 const MoviesPage = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  const handleSearch = async () => {
-    if (searchQuery.trim() === "") return;
+  const handleSearch = async (query) => {
     try {
-      const data = await searchMovies(searchQuery);
+      const data = await searchMovies(query);
       setSearchResults(data.results);
     } catch (error) {
       console.error(error);
@@ -17,12 +18,7 @@ const MoviesPage = () => {
 
   return (
     <div>
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search</button>
+      <SearchBar onSearch={handleSearch} />
       <MovieList movies={searchResults} />
     </div>
   );
