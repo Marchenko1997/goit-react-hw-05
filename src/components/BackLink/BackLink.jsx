@@ -6,7 +6,7 @@ import css from './BackLink.module.css';
 
 export const BackLink = ({ to, children }) => {
   return (
-    <Link to={to} className={css.link}>
+    <Link to={to.pathname + to.search} className={css.link}>
       <HiArrowLeft size="24" />
       {children}
     </Link>
@@ -14,6 +14,12 @@ export const BackLink = ({ to, children }) => {
 };
 
 BackLink.propTypes = {
-    to: PropTypes.string.isRequired, 
-    children: PropTypes.node.isRequired 
-  };
+  to: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({
+      pathname: PropTypes.string.isRequired,
+      search: PropTypes.string.isRequired,
+    }),
+  ]).isRequired,
+  children: PropTypes.node.isRequired 
+};

@@ -8,7 +8,11 @@ const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const location = useLocation(); 
-  const backLinkHref = location.state?.from ?? "/movies";
+  const backLinkHref = location.state?.from ?? {
+    pathname: "/movies",
+    search: location.search
+  };
+  
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
