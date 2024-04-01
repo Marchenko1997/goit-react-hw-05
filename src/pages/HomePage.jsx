@@ -8,12 +8,11 @@ function HomePage() {
   const [isLoading, setIsLoading] = useState(true); 
 
   useEffect(() => {
-    // Очистить результаты поиска из LocalStorage при загрузке страницы HomePage
+   
     localStorage.removeItem('searchResults');
 
     getTrendingMovies()
       .then((data) => {
-        console.log(data); 
         setMovies(data.results);
         setIsLoading(false); 
       })

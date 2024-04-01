@@ -8,7 +8,7 @@ const MovieList = ({ movies }) => {
   const displayMovies = savedSearchResults ? savedSearchResults : movies;
 
   const handleMovieClick = () => {
-    localStorage.setItem('prevPage', window.location.pathname); // Сохраняем текущую страницу перед переходом на детали фильма
+    localStorage.setItem('prevPage', window.location.pathname); 
   };
 
   return (
