@@ -1,12 +1,13 @@
-import { useEffect, useState, useCallback } from 'react';
-import { searchMovies } from '../../movies-api';
-import MovieList from '../components/MovieList';
-import SearchBar from '../components/SearchBar/SearchBar';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState, useCallback } from "react";
+import { searchMovies } from "../../movies-api";
+import MovieList from "../components/MovieList";
+import SearchBar from "../components/SearchBar/SearchBar";
+import { useSearchParams } from "react-router-dom";
 
 const MoviesPage = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query");
 
   const handleSearch = useCallback(async (query) => {
     try {
@@ -18,9 +19,9 @@ const MoviesPage = () => {
   }, []);
 
   useEffect(() => {
-    if (!searchParams.get('query')) return;
-    handleSearch(searchParams.get('query'));
-  }, [searchParams, handleSearch]);
+    if (!query) return;
+    handleSearch(query);
+  }, [query, handleSearch]);
 
   const onSubmit = (query) => {
     setSearchParams({ query: query });
@@ -35,4 +36,3 @@ const MoviesPage = () => {
 };
 
 export default MoviesPage;
-

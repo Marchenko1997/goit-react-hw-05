@@ -7,7 +7,7 @@ export const BackLink = ({ to, children }) => {
 
 
   return (
-    <Link to={String(to)} className={css.link}>
+    <Link to={to} className={css.link}>
       <HiArrowLeft size="24" />
       {children}
     </Link>
@@ -15,12 +15,6 @@ export const BackLink = ({ to, children }) => {
 };
 
 BackLink.propTypes = {
-  to: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape({
-      pathname: PropTypes.string.isRequired,
-      search: PropTypes.string.isRequired,
-    }),
-  ]),
-  children: PropTypes.node.isRequired 
+  to: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
