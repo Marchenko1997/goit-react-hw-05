@@ -1,52 +1,37 @@
-
 import { useEffect, useState, useCallback } from 'react';
 import { searchMovies } from '../../movies-api';
 import MovieList from '../components/MovieList';
 import SearchBar from '../components/SearchBar/SearchBar';
+import { useSearchParams } from 'react-router-dom';
 
 const MoviesPage = () => {
   const [searchResults, setSearchResults] = useState([]);
-  const [searchQuery, setSearchQuery] = useState(""); 
-
-  useEffect(() => {
-    localStorage.removeItem('searchResults');
-  }, []);
-
-  useEffect(() => {
-    const storedResults = JSON.parse(localStorage.getItem('searchResults'));
-    if (storedResults) {
-      setSearchResults(storedResults);
-    }
-  }, []);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleSearch = useCallback(async (query) => {
     try {
-      localStorage.removeItem('searchResults');
       const data = await searchMovies(query);
       setSearchResults(data.results);
-      localStorage.setItem('searchResults', JSON.stringify(data.results));
-
-    
-      const newSearch = `?query=${encodeURIComponent(query)}`;
-      window.history.pushState(null, '', newSearch);
     } catch (error) {
       console.error(error);
     }
   }, []);
 
   useEffect(() => {
-    if (searchQuery.trim() !== "") {
-      handleSearch(searchQuery);
-    }
-  }, [searchQuery, handleSearch]);
+    if (!searchParams.get('query')) return;
+    handleSearch(searchParams.get('query'));
+  }, [searchParams, handleSearch]);
+
+  const onSubmit = (query) => {
+    setSearchParams({ query });
+  };
 
   return (
     <div>
-      <SearchBar onSearch={setSearchQuery} />
+      <SearchBar onSearch={onSubmit} />
       <MovieList movies={searchResults} />
     </div>
   );
 };
 
 export default MoviesPage;
-
