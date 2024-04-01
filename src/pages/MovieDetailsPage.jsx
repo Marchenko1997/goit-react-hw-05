@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { getMovieDetails } from "../../movies-api";
 import { useParams, NavLink, useLocation } from "react-router-dom";
@@ -8,11 +9,7 @@ const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const location = useLocation(); 
-  const backLinkHref = location.state?.from ?? {
-    pathname: "/movies",
-    search: location.search
-  };
-  
+  const backLinkHref = location.state?.from ?? localStorage.getItem('prevPage') ?? "/movies";
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -27,14 +24,16 @@ const MovieDetailsPage = () => {
     fetchMovieDetails();
   }, [movieId]);
 
- 
   if (!movie) return <div>Loading...</div>;
 
-
+  const backLinkTo = {
+    pathname: backLinkHref,
+    search: `?query=${encodeURIComponent(movie.title)}` 
+  };
 
   return (
     <div>
-         <BackLink to={backLinkHref}>Go back</BackLink>
+      <BackLink to={backLinkTo}>Go back</BackLink>
       <h1>{movie.title}</h1>
       <p>{movie.overview}</p>
       <p>User Score: {Math.round(movie.UseScore * 10)}%</p>

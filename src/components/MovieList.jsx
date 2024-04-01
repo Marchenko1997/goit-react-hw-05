@@ -1,12 +1,21 @@
-import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
+
+import { useState } from 'react';
+import PropTypes from 'prop-types'; 
+import { NavLink } from 'react-router-dom';
 
 const MovieList = ({ movies }) => {
+  const [savedSearchResults] = useState(JSON.parse(localStorage.getItem('searchResults')));
+  const displayMovies = savedSearchResults ? savedSearchResults : movies;
+
+  const handleMovieClick = () => {
+    localStorage.setItem('prevPage', window.location.pathname); // Сохраняем текущую страницу перед переходом на детали фильма
+  };
+
   return (
     <ul>
-      {movies.map((movie) => (
+      {displayMovies.map((movie) => (
         <li key={movie.id}>
-          <NavLink to={`/movies/${movie.id}`}>
+          <NavLink to={`/movies/${movie.id}`} onClick={() => handleMovieClick(movie)}>
             <h2>{movie.title}</h2>
           </NavLink>
         </li>

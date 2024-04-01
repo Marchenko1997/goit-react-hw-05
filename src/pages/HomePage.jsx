@@ -1,12 +1,16 @@
-import { useState, useEffect } from "react";
-import { getTrendingMovies } from "../../movies-api";
-import MovieList from "../components/MovieList";
+
+import { useEffect, useState } from 'react';
+import { getTrendingMovies } from '../../movies-api';
+import MovieList from '../components/MovieList';
 
 function HomePage() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true); 
 
   useEffect(() => {
+    // Очистить результаты поиска из LocalStorage при загрузке страницы HomePage
+    localStorage.removeItem('searchResults');
+
     getTrendingMovies()
       .then((data) => {
         console.log(data); 
@@ -15,7 +19,6 @@ function HomePage() {
       })
       .catch((error) => console.error(error));
   }, []);
-
 
   if (isLoading) {
     return <div>Loading...</div>;

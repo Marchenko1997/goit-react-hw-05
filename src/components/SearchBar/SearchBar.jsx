@@ -1,33 +1,35 @@
-import{ useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types'; 
 
 const SearchBar = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = async () => {
+  const handleSearch = async (e) => {
+    e.preventDefault(); 
     if (searchQuery.trim() === "") return;
     try {
-      onSearch(searchQuery); 
+      localStorage.removeItem('prevPage');
+      await onSearch(searchQuery); 
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div>
+    <form onSubmit={handleSearch}>
       <input
         type="text"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <button onClick={handleSearch}>Search</button>
-    </div>
+      <button type="submit">Search</button>
+    </form>
   );
 };
-
 
 SearchBar.propTypes = {
   onSearch: PropTypes.func.isRequired 
 };
 
 export default SearchBar;
+
