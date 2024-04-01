@@ -23,7 +23,7 @@ const MoviesPage = () => {
   }, [searchParams, handleSearch]);
 
   const onSubmit = (query) => {
-    setSearchParams({ query });
+    setSearchParams({ query: query });
   };
 
   return (
@@ -35,3 +35,4 @@ const MoviesPage = () => {
 };
 
 export default MoviesPage;
+

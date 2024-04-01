@@ -8,7 +8,7 @@ const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const location = useLocation(); 
-  const backLinkHref = useRef(location.state?.from || "/"); // Используйте правильный путь возврата
+  const backLinkHref = useRef(location.state?.from || "/"); 
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
