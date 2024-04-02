@@ -1,7 +1,7 @@
 // MovieReviews.jsx
 import { useEffect, useState } from "react";
-import { serviceMovieReviews } from "../../movies-api";
-
+import { serviceMovieReviews } from "../../../movies-api";
+import css from './MovieReviews.module.css'
 import { useParams } from "react-router-dom";
 
 const MovieReviews = () => {
@@ -22,24 +22,21 @@ const MovieReviews = () => {
 
     fetchReviews();
   }, [movieId]);
-
   return (
-    <div>
+    <div className={css.container}>
       <h2>Reviews</h2>
-      <ul>
-        {reviews.map(review => (
-          <li key={review.id}>
-            <h3>{review.author}</h3>
-            <p>{review.content}</p>
+      <ul className={css.reviewList}>
+        {reviews.map((review) => (
+          <li key={review.id} className={css.reviewItem}> 
+            <h3 className={css.authorName}>{review.author}</h3> 
+            <p className={css.reviewContent}>{review.content}</p> 
           </li>
         ))}
       </ul>
-      
+
       {error && <span>Error! Please, reload this page!</span>}
     </div>
   );
 };
-
-
 
 export default MovieReviews;

@@ -1,17 +1,16 @@
-// MovieList.jsx
-import { NavLink, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types'; 
+import { NavLink, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
+import css from "./MovieList.module.css";
 
 const MovieList = ({ movies }) => {
   const location = useLocation();
 
   return (
-    <ul>
+    <ul className={css.movieList}>
       {movies.map((movie) => (
-        <li key={movie.id}>
-          {/* <NavLink to={{ pathname: `/movies/${movie.id}`, state: { from: location.pathname } }}> */}
-            <NavLink to={`/movies/${movie.id}`} state={location}>
-            <h2>{movie.title}</h2>
+        <li key={movie.id} className={css.movieListItem}>
+          <NavLink to={`/movies/${movie.id}`} state={location} className={css.movieLink}>
+            <h2 className={css.movieTitle}>{movie.title}</h2>
           </NavLink>
         </li>
       ))}
@@ -23,7 +22,7 @@ MovieList.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      poster_path: PropTypes.string, 
+      poster_path: PropTypes.string,
       title: PropTypes.string.isRequired,
       overview: PropTypes.string.isRequired,
     })
@@ -31,4 +30,3 @@ MovieList.propTypes = {
 };
 
 export default MovieList;
-

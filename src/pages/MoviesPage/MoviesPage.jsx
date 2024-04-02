@@ -1,8 +1,9 @@
 import { useEffect, useState, useCallback } from "react";
-import { searchMovies } from "../../movies-api";
-import MovieList from "../components/MovieList";
-import SearchBar from "../components/SearchBar/SearchBar";
+import { searchMovies } from "../../../movies-api";
+import MovieList from "../../components/MovieList/MovieList";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import { useSearchParams } from "react-router-dom";
+import css from './MoviesPage.module.css'
 
 const MoviesPage = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -26,13 +27,12 @@ const MoviesPage = () => {
   const onSubmit = (query) => {
     setSearchParams({ query: query });
   };
-
   return (
-    <div>
-      <SearchBar onSearch={onSubmit} />
-      <MovieList movies={searchResults} />
+    <div className={css.moviesPage}>
+      <SearchBar onSearch={onSubmit} className={css.searchBar} />
+      <MovieList movies={searchResults} className={css.movieList} />
     </div>
   );
-};
+}
 
 export default MoviesPage;

@@ -1,0 +1,19 @@
+.movieList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .movieListItem {
+    margin-bottom: 20px;
+  }
+  
+  .movieLink {
+    text-decoration: none;
+    color: darkblue;
+  }
+  
+  .movieTitle {
+    font-size: 18px;
+    margin-top: 5px;
+  }
+  

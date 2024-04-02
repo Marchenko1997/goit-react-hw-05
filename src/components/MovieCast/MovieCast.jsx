@@ -1,6 +1,7 @@
 // MovieCast.jsx
 import { useEffect, useState } from "react";
-import { serviceMovieCredits } from "../../movies-api";
+import { serviceMovieCredits } from "../../../movies-api";
+import css from "./MovieCast.module.css";
 
 import { useParams } from "react-router-dom";
 
@@ -31,29 +32,28 @@ const MovieCast = () => {
 
     fetchMovieCredits();
   }, [movieId]);
-
   return (
-    <div>
-      <ul>
-        {cast.map(actor => (
-          <li key={actor.id}>
+    <div className={css.container}>
+      <ul className={css.castList}>
+        {cast.map((actor) => (
+          <li key={actor.id} className={css.castItem}>
             {actor.profile_path && (
               <img
+                className={css.castImage}
                 src={actor.profile_path}
                 alt={actor.name}
                 width={150}
               />
             )}
-            <p>{actor.name}</p>
-            <p>Character: {actor.character}</p>
+            <p className={css.actorName}>{actor.name}</p>
+            <p className={css.character}>Character: {actor.character}</p>
           </li>
         ))}
       </ul>
-      
-      {error && <span>Error! Please, reload this page!</span>}
+
+      {error && <span className={css.error}>Error! Please, reload this page!</span>}
     </div>
   );
 };
-
 
 export default MovieCast;

@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-
 import css from "./AppBar.module.css";
 
 const AppBar = () => {

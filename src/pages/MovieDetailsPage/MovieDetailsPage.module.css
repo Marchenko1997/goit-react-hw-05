@@ -1,0 +1,55 @@
+/* MovieDetailsPage.module.css */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .backLink {
+    display: flex;
+    align-items: center;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+ 
+  
+  .movieTitle {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .movieOverview {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .userScore {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .genres {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  .additionalInfo {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  .navLinks {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  .navLink {
+    margin-right: 10px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  

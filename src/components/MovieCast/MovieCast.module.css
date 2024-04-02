@@ -1,0 +1,37 @@
+/* MovieCast.module.css */
+
+.container {
+    margin-top: 20px;
+  }
+  
+  .castList {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .castItem {
+    margin-bottom: 20px;
+    width: calc(33.33% - 10px); /* Three items per row with some spacing */
+    text-align: center;
+  }
+  
+  .castImage {
+  
+    margin-bottom: 10px;
+  }
+  
+  .actorName {
+    font-weight: bold;
+  }
+  
+  .character {
+    font-style: italic;
+  }
+  
+  .error {
+    color: red;
+  }
+  

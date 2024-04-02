@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
+import css from './Searchbar.module.css'
 
 const SearchBar = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -8,7 +9,6 @@ const SearchBar = ({ onSearch }) => {
     e.preventDefault(); 
     if (searchQuery.trim() === "") return;
     try {
-      localStorage.removeItem('prevPage');
       await onSearch(searchQuery); 
     } catch (error) {
       console.error(error);
@@ -21,8 +21,9 @@ const SearchBar = ({ onSearch }) => {
         type="text"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
+        className={css.input}
       />
-      <button type="submit">Search</button>
+      <button type="submit" className={css.button}>Search</button>
     </form>
   );
 };
@@ -32,4 +33,3 @@ SearchBar.propTypes = {
 };
 
 export default SearchBar;
-
