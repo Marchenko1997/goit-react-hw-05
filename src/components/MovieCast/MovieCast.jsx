@@ -2,17 +2,19 @@
 import { useEffect, useState } from "react";
 import { serviceMovieCredits } from "../../../movies-api";
 import css from "./MovieCast.module.css";
-
+import { Loader } from "../Loader/Loader";
 import { useParams } from "react-router-dom";
 
 const MovieCast = () => {
   const [cast, setCast] = useState([]);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { movieId } = useParams(); 
 
   useEffect(() => {
     async function fetchMovieCredits() {
       try {
+        setLoading(true);
         setError(false);
         const creditsData = await serviceMovieCredits(movieId);
       
@@ -27,13 +29,16 @@ const MovieCast = () => {
         setCast(castData.slice(0, 16));
       } catch (error) {
         setError(true);
-      } 
+      } finally {
+        setLoading(false);
+      }
     }
 
     fetchMovieCredits();
   }, [movieId]);
   return (
     <div className={css.container}>
+       {loading && <Loader />}
       <ul className={css.castList}>
         {cast.map((actor) => (
           <li key={actor.id} className={css.castItem}>
