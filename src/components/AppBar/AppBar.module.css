@@ -27,7 +27,7 @@
   }
   
   .link {
-    color: #f0f0f0;
+    color: #fff;
     text-decoration: none;
     padding: 0.5rem;
     border-radius: 5px;
@@ -35,12 +35,12 @@
   }
   
   .link:hover {
-    background-color: #f0f0f0;
+    background-color: #fff;
   }
   
   .active {
     font-weight: bold;
-    color: #f0f0f0;
+    color: #0056b3;;
     margin-left: 10px;
     transition: all 250ms linear 0s;
   }

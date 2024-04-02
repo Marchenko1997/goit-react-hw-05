@@ -3,19 +3,23 @@
   }
   
   .notFoundTitle {
-    font-size: 24px;
-    color: #333;
+    font-size: 35px;
+    color: #fff;
   }
   
   .notFoundText {
-    margin-top: 10px;
-    color: #666;
+    margin-top: 20px;
+    color: #fff;
   }
   
   .notFoundLink {
     display: inline-block;
     margin-top: 20px;
-    color: #007bff;
+    color: rgb(255, 255, 255);
+    background-color:#2e3c5efd;
     text-decoration: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
   }
   
