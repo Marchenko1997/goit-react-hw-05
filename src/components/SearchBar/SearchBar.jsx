@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import toast, { Toaster } from 'react-hot-toast';
 import css from './Searchbar.module.css'
 
 const SearchBar = ({ onSearch }) => {
@@ -7,7 +8,11 @@ const SearchBar = ({ onSearch }) => {
 
   const handleSearch = async (e) => {
     e.preventDefault(); 
-    if (searchQuery.trim() === "") return;
+    if (searchQuery.trim() === "") {
+      toast.error('Please enter a search term!');
+      return;
+    }
+    
     try {
       await onSearch(searchQuery); 
     } catch (error) {
@@ -16,15 +21,18 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSearch} className={css.form}>
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        className={css.input}
-      />
-      <button type="submit" className={css.button}>Search</button>
-    </form>
+    <div>
+      <form onSubmit={handleSearch} className={css.form}>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className={css.input}
+        />
+        <button type="submit" className={css.button}>Search</button>
+      </form>
+      <Toaster />
+    </div>
   );
 };
 
