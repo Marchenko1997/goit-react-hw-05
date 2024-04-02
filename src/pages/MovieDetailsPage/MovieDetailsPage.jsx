@@ -54,7 +54,7 @@ const MovieDetailsPage = () => {
         </div>
       )}
       <div className={css.navContainer}>
-        <p className={css.additionalInfo}>Additional information</p>
+        <p className={css.additionalInfo}><b>Additional information</b></p>
         <nav className={css.navLinks}>
           <NavLink to={`/movies/${movieId}/cast`} className={css.navLink}>
             Cast
