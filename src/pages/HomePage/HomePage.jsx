@@ -1,33 +1,35 @@
-
 import { useEffect, useState } from 'react';
 import { getTrendingMovies } from '../../../movies-api';
 import MovieList from '../../components/MovieList/MovieList';
-import css from './HomePage.module.css'
+import { Loader } from '../../components/Loader/Loader';
+import css from './HomePage.module.css';
+
 function HomePage() {
   const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    localStorage.removeItem('searchResults');
-
-    getTrendingMovies()
-      .then((data) => {
+    async function fetchTrendingMovies() {
+      try {
+        setLoading(true);
+        const data = await getTrendingMovies();
         setMovies(data.results);
-        setIsLoading(false);
-      })
-      .catch((error) => console.error(error));
-  }, []);
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+       
+      }finally {
+        setLoading(false);
+      }
+    }
 
-  if (isLoading) {
-    return (
-      <div className={css.loadingContainer}>
-        <div className={css.loading}>Loading...</div>
-      </div>
-    );
-  }
+
+    fetchTrendingMovies();
+  }, []);
 
   return (
     <div>
+      {loading && <Loader />}
       <h1 className={css.title}>Trending today</h1>
       <div className={css.movieContainer}>
         <MovieList movies={movies} />

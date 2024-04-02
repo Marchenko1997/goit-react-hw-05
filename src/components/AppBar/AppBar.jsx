@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
+import { Loader } from "../Loader/Loader";
 import css from "./AppBar.module.css";
 
 const AppBar = () => {
@@ -27,7 +28,7 @@ const AppBar = () => {
           </NavLink>
         </nav>
       </header>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader/>}>
         <Outlet />
       </Suspense>
     </div>
