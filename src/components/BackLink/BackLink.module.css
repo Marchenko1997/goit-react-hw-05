@@ -1,3 +1,18 @@
 .link {
-    margin-right: 5px;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    background-color:#2e3c5efd;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 250ms linear 0s;
+    display: flex;
+    max-width: fit-content;
 }

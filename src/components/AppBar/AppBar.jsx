@@ -11,7 +11,7 @@ const AppBar = () => {
 
   return (
     <div>
-      <header>
+      <header className={css.header}>
         <p className={css.logo}>
           <span role="img" aria-label="computer icon">
             💻

@@ -1,19 +1,29 @@
+.movieContainer {
+  flex-wrap: wrap;
+  list-style-type: square;
+  padding-left: 0;
+}
 .movieList {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .movieListItem {
-    margin-bottom: 20px;
-  }
-  
-  .movieLink {
-    text-decoration: none;
-    color: darkblue;
-  }
-  
-  .movieTitle {
-    font-size: 18px;
-    margin-top: 5px;
-  }
-  
+  text-align: left;
+}
+
+.movieItem {
+  flex: 0 0 50%;
+  background-color: #2e3c5efd;
+  color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.movieItem:hover {
+    color: #004287;
+}
+
+.movieTitle {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.movieDescription {
+  font-size: 14px;
+}

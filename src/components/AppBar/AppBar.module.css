@@ -1,22 +1,37 @@
 /* AppBar.module.css */
-
+.header {
+    top: 0px;
+    left: 0px;
+    position: sticky;
+    z-index: 1100;
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: start;
+    -webkit-box-align: center;
+    align-items: center;
+    min-height: 64px;
+    padding: 12px 24px;
+    color: rgb(255, 255, 255);
+    background-color:#2e3c5efd;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px, rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+}
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.rem;
     font-weight: bold;
     margin: 0;
   }
   
   .nav {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
+   margin-left: 30px ;
+   gap: 10px;
   }
   
   .link {
-    color: #333;
+    color: #f0f0f0;
     text-decoration: none;
     padding: 0.5rem;
     border-radius: 5px;
+    transition: all 250ms linear 0s;
   }
   
   .link:hover {
@@ -25,6 +40,8 @@
   
   .active {
     font-weight: bold;
-    color: #007bff;
+    color: #f0f0f0;
+    margin-left: 10px;
+    transition: all 250ms linear 0s;
   }
   

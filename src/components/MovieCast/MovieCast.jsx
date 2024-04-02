@@ -42,7 +42,7 @@ const MovieCast = () => {
                 className={css.castImage}
                 src={actor.profile_path}
                 alt={actor.name}
-                width={150}
+                width={200}
               />
             )}
             <p className={css.actorName}>{actor.name}</p>

@@ -14,13 +14,12 @@
   
   .castItem {
     margin-bottom: 20px;
-    width: calc(33.33% - 10px); /* Three items per row with some spacing */
+    width: calc(33.33% - 10px); 
     text-align: center;
   }
   
   .castImage {
-  
-    margin-bottom: 10px;
+    border: 2px solid black;
   }
   
   .actorName {

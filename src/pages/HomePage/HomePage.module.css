@@ -1,0 +1,25 @@
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+  }
+  
+  .loading {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .title {
+    font-size: 42px;
+    font-weight: bold;
+   text-align: left;
+    padding-left: 20px;
+  }
+  
+  .movieContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
