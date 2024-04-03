@@ -22,7 +22,7 @@ const MoviesPage = () => {
     } finally{
       setLoading(false);
     }
-  }, []);
+  }, [searchMovies]);
 
   useEffect(() => {
     if (!query) return;
